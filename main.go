@@ -8,6 +8,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", index)
+	http.HandleFunc("/api/echo", echo)
 	http.ListenAndServe(GetServePort(), nil)
 }
 
@@ -21,7 +22,17 @@ func GetServePort() string {
 	return ":" + port
 }
 
+// index is the root entrypoint to the http server
 func index(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "I'm only a hello world now, but I'll be a real program one day")
+}
+
+// echo prints the value of the URI parameter "message"
+func echo(w http.ResponseWriter, r *http.Request) {
+	message := r.URL.Query()["message"][0]
+
+	w.WriteHeader(http.StatusOK)
+	w.Header().Add("Content-Type", "text/plain")
+	fmt.Fprintf(w, message)
 }
