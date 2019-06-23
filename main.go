@@ -4,17 +4,21 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+
+	"github.com/vinny-sabatini/cloud-native-go-intro/api"
 )
 
 func main() {
 	http.HandleFunc("/", index)
-	http.HandleFunc("/api/echo", echo)
+	http.HandleFunc("/api/echo", api.EchoHandleFunc)
+
+	http.HandleFunc("/api/books", api.BooksHandleFunc)
+
 	http.ListenAndServe(GetServePort(), nil)
 }
 
 // GetServePort returns environment variable SERVE_PORT if set otherwise, 8080 is returned
 func GetServePort() string {
-	//TODO: do this as a command line option instead
 	port := os.Getenv("SERVE_PORT")
 	if len(port) == 0 {
 		port = "8080"
