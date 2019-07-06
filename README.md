@@ -21,3 +21,6 @@ Chapter 2 started with getting a basic HTTP server.
 We then created a couple endpoints:
 1) api/echo: Simply print back the value of "message" in the URI
 1) api/books: Print a collection of book objects
+
+## Chapter 3
+Chapter 3 introduces how to get your app running on a Docker container
