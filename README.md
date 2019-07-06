@@ -24,3 +24,6 @@ We then created a couple endpoints:
 
 ## Chapter 3
 Chapter 3 introduces how to get your app running on a Docker container
+
+## DONE
+I have chosen to not complete this course and look into something different.
